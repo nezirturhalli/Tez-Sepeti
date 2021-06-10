@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Arama</h4>
+            </div>           
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+ 
+                <!-- Row -->
+                <div class="row">
+                    <!-- column -->
+                    @foreach (ProjectModel project in ViewBag.MyProjects)
+                    {
+                        <div class="col-lg-3 col-md-6 img-responsive">
+                            <!-- Card -->
+                            <div class="card">
+                                <img class="card-img-top img-responsive" src="../assets/images/big/img4.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">@project.subject</h4>
+                                    <p class="card-text">@Html.Raw(@project.description)</p>
+                                    <button type="button" class="btn btn-outline-warning"><i class="fa fa-heart"></i> @project.viewed</button>
+                                    <button type="button" class="btn btn-outline-danger"><i class="fa fa-heart"></i> @project.updatedDate</button>                                    
+                                    <a asp-controller="Project" asp-action="SingleProject" asp-route-id="@project.ID" class="btn btn-primary">Daha Fazlası</a>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                    }
+                   
+                </div>
+                <!-- Row -->
+            </div>
+        </div>
+        <!-- End Row -->
+        <!-- Row -->     
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>

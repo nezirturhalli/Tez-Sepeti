@@ -1,0 +1,126 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model TezSepeti.Models.UserModel
+@{
+    UserModel UserInfo = ViewBag.UserInfo;
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Profil</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Anasayfa</a></li>
+                            <li class="breadcrumb-item active">Profil</li>
+                        </ol>
+                        @*<button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>*@
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <!-- Row -->
+            <div class="row">
+                <!-- Column -->
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <center class="m-t-30">
+                                <img src="~/Uploads/@UserInfo.imageName" class="img-circle" width="150" />
+                                <h4 class="card-title m-t-10">@UserInfo.name</h4>
+                                <h6 class="card-subtitle">@UserInfo.lastName</h6>
+                                <div class="row text-center justify-content-md-center">
+                                    
+                                </div>
+                            </center>
+                        </div>
+                        <div>
+                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <small class="text-muted">E-Posta </small>
+                            <h6>@UserInfo.email</h6> <small class="text-muted p-t-30 db">Telefon</small>
+                            <h6>@UserInfo.phone</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+                <!-- Column -->
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs profile-tab" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab">Ayarlar</a> </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="settings" role="tabpanel">
+                                <div class="card-body">
+                                    <form asp-controller="User" asp-action="UpdateUser" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label class="col-md-12">Ad</label>
+                                            <div class="col-md-12">
+                                                <input type="text" asp-for="name" placeholder="@UserInfo.name" class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Soyad</label>
+                                            <div class="col-md-12">
+                                                <input type="text" asp-for="lastName" placeholder="@UserInfo.lastName" class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Telefon</label>
+                                            <div class="col-md-12">
+                                                <input type="text" asp-for="phone" placeholder="@UserInfo.phone" maxlength="11" class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Şifre</label>
+                                            <div class="col-md-12">
+                                                <input type="password" asp-for="password" value="" class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Resim</label>
+                                            <div class="col-md-12">
+                                                <input type="file" asp-for="photo" value="" class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-success">Güncelle</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Column -->
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div> }

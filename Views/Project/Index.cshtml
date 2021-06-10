@@ -1,0 +1,211 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Proje Ekle</h4>
+            </div>
+            <div class="col-md-7 align-self-center text-right">
+                <div class="d-flex justify-content-end align-items-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Proje</a></li>
+                        <li class="breadcrumb-item active">Tezi Düzenle</li>
+                    </ol>
+                    <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Yeni Proje</button>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase">TEZ DETAYLARI</h5>
+                        <form class="form-material form-horizontal m-t-40">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="example-text">
+                                        Course Name</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="example-text" name="example-text" class="form-control text-muted" placeholder="Web Development" value="Web Development">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="bdate">
+                                        Course Start Date</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="bdate" name="bdate" class="form-control mydatepicker text-muted" placeholder="11/01/2017" value="11/01/2017">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="bdate">
+                                        Course Duration</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="bdate" name="bdate" class="form-control text-muted" placeholder="6 Months" value="6 Months">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="bdate">
+                                        Course Price</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="bdate" name="bdate" class="form-control text-muted" placeholder="$150.00" value="$150.00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="bdate">
+                                        Course Professor</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="bdate" name="bdate" class="form-control text-muted" placeholder="Jane Doe" value="Jane Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-12">Profile Image</label>
+                                    <div class="col-sm-12">
+                                        <img class="img-responsive" src="dist/images/big/c2.jpg" alt="" style="max-width:120px;">
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                                                <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                                <input type="file" name="...">
+                                            </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-12" for="dept">Department</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control text-muted" id="dept">
+                                            <option>Select Department</option>
+                                            <option selected="selected">Computer</option>
+                                            <option>Mechanical</option>
+                                            <option>Electrical</option>
+                                            <option>Medical</option>
+                                            <option>BCA/MCA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="position">
+                                        Year</span>
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="position" name="position" class="form-control text-muted" placeholder="Third Year" value="Third Year">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12">Description</label>
+                                    <div class="col-md-12">
+                                        <textarea class="form-control text-muted" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Submit</button>
+                            <button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <div class="right-sidebar">
+            <div class="slimscrollright">
+                <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>With Light sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme working">4</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                        <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                    </ul>
+                    <ul class="m-t-20 chatonline">
+                        <li><b>Chat option</b></li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>

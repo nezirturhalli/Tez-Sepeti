@@ -1,0 +1,249 @@
+﻿@model TezSepeti.Models.UserModel
+@{ UserModel UserInfo = ViewBag.UserInfo;
+     }
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
+    <title>@ViewData["Title"] - TezSepeti</title>
+    <!-- Custom CSS -->
+    <link href="~/dist/css/pages/file-upload.css" rel="stylesheet">
+    <link href="~/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+    @RenderSection("styles", false)
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="skin-blue fixed-layout">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Tez Sepeti</p>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="~/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="~/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <span class="hidden-xs"><span class="font-bold">Tez</span>Sepeti</span>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item">
+                            <form class="app-search d-none d-md-block d-lg-block" asp-controller="Project" asp-action="SearchProject" method="get">
+                                <input id="s" name="s" type="text" class="form-control" placeholder="Ara">
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- User profile and search -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav my-lg-0">                      
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- Messages -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="icon-note"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu mailbox dropdown-menu-right animated bounceInDown" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">1 Yeni Mesaj</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            
+                                            <!-- Message -->
+                                            <a href="javascript:void(0)">
+                                                <div class="user-img"> <img src="~/assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Ahmet Çubukçu</h5> <span class="mail-desc">Paylaştığınız tez ilgimi çekti.Lütfen iletişime geçin!</span> <span class="time">9:10 </span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            
+                                            <!-- Message -->
+                                            
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center link" href="javascript:void(0);"> <strong>Tüm Mesajları Gör</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End Messages -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->                      
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                        <!-- User Profile -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown u-pro">
+                            <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/Uploads/@UserInfo.imageName" alt="user" class=""> <span class="hidden-md-dwn">@UserInfo.name<i class="fa fa-angle-down"></i></span> </a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <!-- text-->
+                                <a asp-controller="User" asp-action="Profile" class="dropdown-item"><i class="ti-user"></i> Profilim</a>
+                                <!-- text-->
+                                <div class="dropdown-divider"></div>
+                                <!-- text-->
+                                <a asp-controller="User"
+ asp-action="Logout" class="dropdown-item"><i class="fa fa-power-off"></i> Çıkış</a>
+                                <!-- text-->
+                            </div>
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- End User Profile -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="user-pro">
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="~/Uploads/@UserInfo.imageName" alt="user-img" class="img-circle"><span class="hide-menu">@UserInfo.name</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a asp-controller="User" asp-action="Profile"><i class="ti-user"></i> Profilim</a></li>
+                                <li>
+                                    <a asp-controller="User"
+                                       asp-action="Logout"><i class="fa fa-power-off"></i> Çıkış</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @if (@UserInfo.userTypeID == 2)
+                        {
+                            <li class="nav-small-cap">--- Tezlerim</li>
+                            <li>
+                                <a class="waves-effect waves-dark" asp-controller="Project" asp-action="NewProject"><i class="icon-speedometer"></i><span class="hide-menu">Yeni Proje</span></a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-dark" asp-controller="Project" asp-action="MyProjects"><i class="icon-speedometer"></i><span class="hide-menu">Projelerim</span></a>
+                            </li>
+                        }
+                            <li class="nav-small-cap">--- Popüler</li>
+                            <li>
+                                <a class="waves-effect waves-dark" asp-controller="Project" asp-action="ListProjects"><i class="icon-speedometer"></i><span class="hide-menu">Son Gelişmeler</span></a>
+                            </li>
+                            <li>
+                                <a class="waves-effect waves-dark" asp-controller="Project" asp-action="FavProjects"><i class="icon-speedometer"></i><span class="hide-menu">Favorilerim</span></a>
+                            </li>
+                        </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        @RenderBody()
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer">
+            © 2020 Tezsepeti
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/assets/node_modules/popper/popper.min.js"></script>
+    <script src="~/assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="~/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/dist/js/custom.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="~/assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript">// Date Picker
+        jQuery('.mydatepicker').datepicker();</script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/dist/js/pages/jasny-bootstrap.js"></script>
+    <!-- This Page JS -->
+    <script src="~/assets/node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="~/dist/js/pages/mask.init.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

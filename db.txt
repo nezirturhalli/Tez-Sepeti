@@ -1,0 +1,53 @@
+USE [TezSepeti]
+GO
+/****** Object:  Table [dbo].[TezProjects]    Script Date: 12/16/2020 12:39:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TezProjects](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[subject] [nvarchar](150) NULL,
+	[description] [nvarchar](500) NULL,
+	[mediaJson] [text] NULL,
+	[textJson] [text] NULL,
+	[fileJson] [text] NULL,
+	[tags] [nvarchar](300) NULL,
+	[supportersList] [text] NULL,
+	[totalValue] [decimal](18, 0) NULL,
+	[currentValue] [decimal](18, 0) NULL,
+	[personelCount] [int] NULL,
+	[time] [nvarchar](30) NULL,
+	[viewed] [int] NULL,
+	[totalminute] [int] NULL,
+	[createdDate] [date] NULL,
+	[updatedDate] [date] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TezUsers]    Script Date: 12/16/2020 12:39:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TezUsers](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[name] [nvarchar](50) NOT NULL,
+	[lastName] [nvarchar](50) NOT NULL,
+	[email] [nvarchar](50) NULL,
+	[password] [nvarchar](50) NULL,
+	[userTypeID] [int] NULL,
+	[phone] [nvarchar](50) NULL,
+	[createdDate] [date] NULL,
+	[updatedDate] [date] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TezUserType]    Script Date: 12/16/2020 12:39:32 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TezUserType](
+	[ID] [int] NULL,
+	[name] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO

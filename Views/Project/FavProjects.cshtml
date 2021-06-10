@@ -1,0 +1,112 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Favorilerim</h4>
+            </div>        
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">               
+                <!-- Row -->
+                <div class="row">
+                    <!-- column -->
+                    @foreach (FavLikeViewModel project in ViewBag.pDetail)
+                    {
+                        <div class="col-lg-3 col-md-6 img-responsive">
+                            <!-- Card -->
+                            <div class="card">
+                                <img class="card-img-top img-responsive" src="@project.img" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">@project.p.subject</h4>
+                                    <p class="card-text">@Html.Raw(@project.p.description)</p>
+
+                                    <button type="button" class="btn btn-secondary btn-outline" data-toggle="button" aria-pressed="@project.faved" id="fav-@project.p.ID" onclick="TezFav(@project.p.ID)">
+                                        <i class="fa fa-heart text" aria-hidden="true"> @project.favCount</i>
+                                        <i class="fa fa-heart text-active text-danger" aria-hidden="true"> @(project.favCount+1)</i>
+                                    </button>
+                                    <button type="button" class="btn btn-secondary btn-outline" data-toggle="button" aria-pressed="@project.liked" id="like-@project.p.ID"  onclick="TezLike(@project.p.ID)">
+                                        <i class="far fa-thumbs-up text" aria-hidden="true">@project.likeCount</i>
+                                        <i class="far fa-thumbs-up text-active text-danger" aria-hidden="true">@(project.likeCount+1)</i>
+                                    </button>
+                                    <button type="button" class="btn btn-primary"><i class="fas fa-eye"></i>@project.viewed</button>
+
+                                    <a asp-controller="Project" asp-action="SingleProject" asp-route-id="@project.p.ID" class="btn btn-primary">Daha Fazlası</a>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                    }
+
+                </div>
+                <!-- Row -->
+            </div>
+        </div>
+        <!-- End Row -->
+        <!-- Row -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+            function TezFav(projectID) {
+                value = $('fav-'+projectID).attr('aria-pressed');
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("FavoriteFunc")",
+                    data: { ProjectID: projectID},
+                    dataType: "text",
+                    success: function (msg) {
+                        console.log(msg);
+                        /*var res = msg.split(",");
+                        if (res === "true") {
+                            $('fav-'+projectID).attr('aria-pressed', 'true');
+                            $('fav-'+projectID).children(".text-active").text(res[1]);
+                        }
+                        else {
+                            $(this).attr('aria-pressed', 'false');
+                            $('fav-'+projectID).children(".text").text(res[1]);
+                        }*/
+                    },
+                    error: function (req, status, error) {
+                        console.log(msg);
+                    }
+                });
+        }
+            function TezLike(projectID) {
+                value = $('like-'+projectID).attr('aria-pressed');
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("LikeFunc")",
+                    data: { ProjectID: projectID},
+                    dataType: "text",
+                    success: function (msg) {
+                        console.log(msg);                     
+                    },
+                    error: function (req, status, error) {
+                        console.log(msg);
+                    }
+                });
+            }
+    </script>
+}

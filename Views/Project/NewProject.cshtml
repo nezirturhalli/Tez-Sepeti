@@ -1,0 +1,346 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+@section Styles {
+    <link href="@Url.Content("~/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" href="~/assets/node_modules/dropify/dist/css/dropify.min.css">
+}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Proje Ekle</h4>
+            </div>      
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase">Proje</h5>
+                        <form asp-controller="Project" enctype="multipart/form-data" class="form-material form-horizontal m-t-40" asp-action="CreateProject" method="post">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-12" for="subject">
+                                            Konu
+                                        </label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="subject" name="subject" class="form-control text-muted" placeholder="Web Sitesi v.b" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <label class="col-md-12" for="total_value">
+                                            Gerekli Bütçe(TL)
+                                        </label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="total_value" name="total_value" class="form-control text-muted" placeholder="0TL" value="0TL">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="col-md-12" for="current_value">
+                                            Toplanan Miktar(TL)
+                                        </label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="current_value" name="current_value" class="form-control text-muted" placeholder="0TL" value="0TL">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="col-md-12" for="personel_count">
+                                            Gerekli Kişi Sayısı
+                                        </label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="personel_count" name="personel_count" class="form-control text-muted" placeholder="1" value="1">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="col-md-12" for="time">
+                                            Gerekli Süre                                     </label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="time" name="time" class="form-control text-muted" placeholder="1 Yıl" value="1 Yıl">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-12" for="ptags">
+                                            Etiketler
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="tags-default">
+                                                <input type="text" name="ptags" id="ptags" value="" data-role="tagsinput" placeholder="Etiket Ekle" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-12" for="supporters_list">
+                                            Destekleyenler
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="tags-default">
+                                                <input type="text" name="supporters_list" id="supporters_list" value="" data-role="tagsinput" placeholder="add tags" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label class="col-md-12" for="description">
+                                            Tanım
+                                        </label>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea id="description" name="description" class="form-control" rows="15" placeholder="Metin ..."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="hidden" id="media_list" name="media_list" value="">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Medya Dosyaları <button class="btn btn-success" type="button" onclick="media_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                    <div class="row" id="media_fields">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Medya 1</h4>
+                                                                    <label for="media1">Slider Resmi</label>
+                                                                    <input type="file" id="media1" name="media1" class="tezmedia dropify" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="hidden" id="textsub_list" name="textsub_list" value="">
+                                            <input type="hidden" id="text_list" name="text_list" value="">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Yazılar<button class="btn btn-success" type="button" onclick="text_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                    <div class="row" id="text_fields">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <input type="text" name="tsubject1" id="tsubject1" class="form-control form-control-danger tezsub" placeholder="Başlık">
+                                                                 
+                                                                        <div class="form-group">
+                                                                            <textarea id="text1" name="text1" class="textarea_editor form-control teztext" rows="15" placeholder="Metin ..."></textarea>
+                                                                        </div>
+                                                                 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <input type="hidden" id="file_list" name="file_list" value="">
+                                                <div class="card-body">
+                                                    <h4 class="card-title">Dosyalar <button class="btn btn-success" type="button" onclick="file_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                    <div class="row" id="file_fields">
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">Dosya 1</h4>
+                                                                    <input type="file" id="file1" name="file1" class="tezfile dropify" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Kaydet</button>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <div class="right-sidebar">
+            <div class="slimscrollright">
+                <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                <div class="r-panel-body">
+                    <ul id="themecolors" class="m-t-20">
+                        <li><b>With Light sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme working">4</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                        <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                        <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                    </ul>
+                    <ul class="m-t-20 chatonline">
+                        <li><b>Chat option</b></li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Right sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+@section Scripts {
+
+    <script src="~/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="~/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
+    <script src="~/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="~/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script>
+        $('.dropify').dropify();
+        $('#description').wysihtml5();
+        $('#text1').wysihtml5();
+
+        var mediaupload = 1;
+        var textupload = 1;
+        var fileupload = 1;
+        var array = $(".tezmedia").map(function () { return this.id; }).get();
+        $('#media_list').val(array);
+        var array = $(".tezfile").map(function () { return this.id; }).get();
+        $('#file_list').val(array);
+        var array = $(".teztext").map(function () { return this.id; }).get();
+        $('#text_list').val(array);
+        var array = $(".tezsub").map(function () { return this.id; }).get();
+        $('#textsub_list').val(array);
+        function media_fields() {
+
+            mediaupload++;
+            var objTo = document.getElementById('media_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-6 mremoveclass" + mediaupload);
+            var rdiv = 'mremoveclass' + mediaupload;
+            divtest.innerHTML = '<div class="col-md-12 "><div class="card"><div class="card-body"><h4 class="card-title">Medya ' + mediaupload + ' <button class="btn btn-danger" type="button" onclick="remove_media_fields(' + mediaupload + ');"> <i class="fa fa-minus"></i></button></h4><label for="input-file-now">Slider Resmi</label><input type="file" id="media' + mediaupload + '" name="media' + mediaupload + '" class="tezmedia dropify" /></div></div></div>';
+            objTo.appendChild(divtest)
+            $('.dropify').dropify()
+
+            var array = $(".tezmedia").map(function () { return this.id; }).get();
+            $('#media_list').val(array);
+        }
+
+        function remove_media_fields(rid) {
+            $('.mremoveclass' + rid).remove();
+            var array = $(".tezmedia").map(function () { return this.id; }).get();
+            $('#media_list').val(array);
+
+        }
+
+        function file_fields() {
+
+            fileupload++;
+            var objTo = document.getElementById('file_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-6 fremoveclass" + fileupload);
+            var rdiv = 'fremoveclass' + fileupload;
+            divtest.innerHTML = '<div class="col-md-12 "><div class="card"><div class="card-body"><h4 class="card-title">Dosya ' + fileupload + ' <button class="btn btn-danger" type="button" onclick="remove_file_fields(' + fileupload + ');"> <i class="fa fa-minus"></i></button></h4><input type="file" id="file' + fileupload + '" name="file' + fileupload + '" class="tezfile dropify" /></div></div></div>';
+            objTo.appendChild(divtest)
+            $('.dropify').dropify()
+
+            var array = $(".tezfile").map(function () { return this.id; }).get();
+            $('#file_list').val(array);
+        }
+
+        function remove_file_fields(rid) {
+            $('.fremoveclass' + rid).remove();
+            var array = $(".tezfile").map(function () { return this.id; }).get();
+            $('#file_list').val(array);
+        }
+
+        function text_fields() {
+
+            textupload++;
+            var objTo = document.getElementById('text_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-12 tremoveclass" + textupload);
+            var rdiv = 'tremoveclass' + textupload;
+            divtest.innerHTML = '<div class="col-12"><div class="card"><div class="card-body row"><div class="col-9"><input type="text" id="tsubject' + textupload + '" name="tsubject' + textupload + '" class="form-control form-control-danger tezsub" placeholder="Başlık ' + textupload + '"></div><div class="col-3"><button class="btn btn-danger" type="button" onclick="remove_text_fields(' + textupload + ');"> <i class="fa fa-minus"></i></button></div><div class="col-12"><textarea id="text' + textupload + '" name="text' + textupload + '" class="form-control teztext" rows="15" placeholder="Metin ..."></textarea></div></div></div></div>';
+            objTo.appendChild(divtest)
+            $('#text' + textupload).wysihtml5();
+            var array = $(".teztext").map(function () { return this.id; }).get();
+            $('#text_list').val(array);
+            var array = $(".tezsub").map(function () { return this.id; }).get();
+            $('#textsub_list').val(array);
+        }
+
+        function remove_text_fields(rid) {
+            $('.tremoveclass' + rid).remove();
+            var array = $(".teztext").map(function () { return this.id; }).get();
+            $('#text_list').val(array);
+            var array = $(".tezsub").map(function () { return this.id; }).get();
+            $('#textsub_list').val(array);
+        }</script>
+}

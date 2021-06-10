@@ -1,0 +1,151 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ }
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Proje Detayı</h4>
+            </div>
+       
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- .row -->
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 m-b-20">
+                                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        @{ Boolean first = true; }
+                                        @{int i = 1;}
+                                        @foreach (MediaModel m in ViewBag.mediaList)
+                                        {
+                                            <li data-target="#carousel"+@m.Name data-slide-to="@i" class="@( first ? "active" : "" )"></li>
+                                            first = false;
+                                            i++;
+                                            
+                                        }
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        @{ first = true; }                                       
+                                        @foreach (MediaModel m in ViewBag.mediaList)
+                                        {
+                                            <div class="carousel-item @( first ? "active" : "" )">
+                                                <img class="img-fluid" src="~/Uploads/@ViewBag.project.ID/Media/@m.FileName" alt="@m.Name">
+                                            </div>                                            
+                                            first = false;
+                                           
+                                        }                                     
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Önceki</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Sonraki</span>
+                                    </a>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 border-right">
+                                <strong>Proje Adı</strong>
+                                <br>
+                                <p class="text-muted">@ViewBag.project.subject</p>
+                            </div>
+                            <div class="col-md-3 border-right">
+                                <strong>Toplam Gereken Miktar(TL)</strong>
+                                <br>
+                                <p class="text-muted">@ViewBag.project.totalValue</p>
+                            </div>
+                            <div class="col-md-3 border-right">
+                                <strong>Toplam Görüntülenme</strong>
+                                <br>
+                                <p class="text-muted">@ViewBag.project.viewed</p>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Proje Sahibi</strong>
+                                <br>
+                                <p class="text-muted"><a asp-controller="User" asp-action="ProfileDetail" asp-route-id="@ViewBag.puser.ID">@ViewBag.puser.name</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach (MediaModel m in ViewBag.fileList)
+                            {
+                                
+                                <form method="get" action="~/Uploads/@ViewBag.project.ID/File/@m.FileName">
+                                    <button class="btn btn-primary waves-effect waves-light" type="submit"><span class="btn-label"><i class="far fa-envelope"></i></span>@m.FileName</button>
+                                </form>
+                               
+                            }
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.Raw(@ViewBag.project.description)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">                                         
+                                            <!-- Nav tabs -->
+                                            <div class="vtabs">
+                                                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                                                    @{ first = true; }
+                                                    @foreach (TextModel t in ViewBag.textList)
+                                                    {
+
+                                                        <li class="nav-item"> <a class="nav-link @( first ? "active" : "" )" data-toggle="tab" href="#@t.SubjectName" role="tab"><span class="hidden-xs-down">@t.SubjectText</span> </a> </li>
+
+                                                        first = false;
+                                                    }
+                                                </ul>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    @{ first = true; }
+                                                    @foreach (TextModel t in ViewBag.textList)
+                                                    {
+                                                    <div class="tab-pane p-20 @( first ? "active" : "" )" id="@t.SubjectName" role="tabpanel">@Html.Raw(@t.DescptionText)</div>
+                                                        first = false;
+                                                    }
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+
+</div>

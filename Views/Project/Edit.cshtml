@@ -1,0 +1,319 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ 
+ 
+}
+@section Styles {
+    <link href="@Url.Content("~/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/assets/node_modules/html5-editor/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" href="~/assets/node_modules/dropify/dist/css/dropify.min.css">
+}
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Proje Ekle</h4>
+            </div>          
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase">Proje</h5>                  
+                        <form asp-controller="Project" enctype="multipart/form-data" class="form-material form-horizontal m-t-40" asp-action="UpdateProject" method="post">
+                            <div class="form-group">
+                                <div class="row">
+                                    <input type="hidden" id="pID" name="pID" value="@ViewBag.project.ID">
+                                    <label class="col-md-12" for="subject">
+                                        Konu
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="subject" name="subject" class="form-control text-muted" placeholder="Web Sitesi v.b" value="@ViewBag.project.subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3">
+                                    <label class="col-md-12" for="total_value">
+                                        Gerekli Bütçe(TL)
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="total_value" name="total_value" class="form-control text-muted" placeholder="0TL" value="@ViewBag.project.totalValue">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="col-md-12" for="current_value">
+                                        Toplanan Miktar(TL)
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="current_value" name="current_value" class="form-control text-muted" placeholder="0TL" value="@ViewBag.project.currentValue">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="col-md-12" for="personel_count">
+                                        Gerekli Kişi Sayısı
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="personel_count" name="personel_count" class="form-control text-muted" placeholder="1" value="@ViewBag.project.personelCount">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="col-md-12" for="time">
+                                        Gerekli Süre
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="text" id="time" name="time" class="form-control text-muted" placeholder="1 Yıl" value="@ViewBag.project.time">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="ptags">
+                                        Etiketler
+                                    </label>
+                                    <div class="col-md-12">
+                                        <div class="tags-default">
+                                            <input type="text" name="ptags" id="ptags" value="@ViewBag.project.tags" data-role="tagsinput" placeholder="Etiket Ekle" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="supporters_list">
+                                        Destekleyenler
+                                    </label>
+                                    <div class="col-md-12">
+                                        <div class="tags-default">
+                                            <input type="text" name="supporters_list" id="supporters_list" value="@ViewBag.project.supportersList" data-role="tagsinput" placeholder="add tags" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-12" for="description">
+                                        Tanım
+                                    </label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <textarea id="description" name="description" class="form-control" rows="15" placeholder="Metin ...">@ViewBag.project.description</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="media_list" name="media_list" value="">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Medya Dosyaları <button class="btn btn-success" type="button" onclick="media_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                <div class="row" id="media_fields">
+                                                    @foreach (MediaModel m in ViewBag.mediaList)
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">@m.Name</h4>
+                                                                    <label for="@m.Name">Slider Resmi</label>
+                                                                    <input type="file" id="@m.Name" name="@m.Name" class="tezmedia dropify" data-default-file="/../Uploads/@ViewBag.project.ID/Media/@m.FileName" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="textsub_list" name="textsub_list" value="">
+                                        <input type="hidden" id="text_list" name="text_list" value="">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Yazılar<button class="btn btn-success" type="button" onclick="text_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                <div class="row" id="text_fields">
+                                                    @foreach (TextModel t in ViewBag.textList)
+                                                    {
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <input type="text" name="@t.SubjectName" id="@t.SubjectName" class="form-control form-control-danger tezsub" placeholder="Başlık" value="@t.SubjectText">
+
+                                                                    <div class="form-group">
+                                                                        <textarea id="@t.DescptionName" name="@t.DescptionName" class="textarea_editor form-control teztext" rows="15" placeholder="Metin ...">@t.DescptionText</textarea>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <input type="hidden" id="file_list" name="file_list" value="">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Dosyalar <button class="btn btn-success" type="button" onclick="file_fields();"><i class="fa fa-plus"></i></button></h4>
+                                                <div class="row" id="file_fields">
+                                                    @foreach (MediaModel m in ViewBag.fileList)
+                                                    {
+                                                        <div class="col-md-6">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="card-title">@m.Name</h4>
+                                                                    <input type="file" id="@m.Name" name="@m.Name" class="tezfile dropify" data-default-file="@m.Path" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Kaydet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->       
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+</div>
+@section Scripts {
+
+    <script src="~/assets/node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+    <script src="~/assets/node_modules/dropify/dist/js/dropify.min.js"></script>
+    <script src="~/assets/node_modules/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="~/assets/node_modules/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script>
+$('.dropify').dropify();
+        $('#description').wysihtml5();
+        $('#text1').wysihtml5();
+        var array = $(".tezmedia").map(function () { return this.id; }).get();
+        $('#media_list').val(array);
+        var array = $(".tezfile").map(function () { return this.id; }).get();
+        $('#file_list').val(array);
+        var array = $(".teztext").map(function () { return this.id; }).get();
+        $('#text_list').val(array);
+        var array = $(".tezsub").map(function () { return this.id; }).get();
+        $('#textsub_list').val(array);
+        var mediaupload = 1;
+        var textupload = 1;
+        var fileupload = 1;
+
+        function media_fields() {    
+            
+            var res_m = $('#media_list').val().split(",");
+            do {
+                mediaupload++;
+                var checkname = "media" + mediaupload;
+            } while ($.inArray(checkname, res_m) > -1);
+
+            var objTo = document.getElementById('media_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-6 mremoveclass" + mediaupload);
+            var rdiv = 'mremoveclass' + mediaupload;
+            divtest.innerHTML = '<div class="col-md-12 "><div class="card"><div class="card-body"><h4 class="card-title">Medya ' + mediaupload + ' <button class="btn btn-danger" type="button" onclick="remove_media_fields(' + mediaupload + ');"> <i class="fa fa-minus"></i></button></h4><label for="input-file-now">Slider Resmi</label><input type="file" id="media' + mediaupload + '" name="media' + mediaupload + '" class="tezmedia dropify" /></div></div></div>';
+            objTo.appendChild(divtest)
+            $('.dropify').dropify()
+
+            var array = $(".tezmedia").map(function () { return this.id; }).get();
+            $('#media_list').val(array);
+        }
+
+        function remove_media_fields(rid) {
+            $('.mremoveclass' + rid).remove();
+            var array = $(".tezmedia").map(function () { return this.id; }).get();
+            $('#media_list').val(array);
+
+        }
+
+        function file_fields() {
+           
+            var res_f = $('#file_list').val().split(",");
+            do {
+                fileupload++;
+                var checkname = "file" + mediaupload;
+            } while ($.inArray(checkname, res_f) > -1);
+
+            var objTo = document.getElementById('file_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-6 fremoveclass" + fileupload);
+            var rdiv = 'fremoveclass' + fileupload;
+            divtest.innerHTML = '<div class="col-md-12 "><div class="card"><div class="card-body"><h4 class="card-title">Dosya ' + fileupload + ' <button class="btn btn-danger" type="button" onclick="remove_file_fields(' + fileupload + ');"> <i class="fa fa-minus"></i></button></h4><input type="file" id="file' + fileupload + '" name="file' + fileupload + '" class="tezfile dropify" /></div></div></div>';
+            objTo.appendChild(divtest)
+            $('.dropify').dropify()
+
+            var array = $(".tezfile").map(function () { return this.id; }).get();
+            $('#file_list').val(array);
+        }
+
+        function remove_file_fields(rid) {
+            $('.fremoveclass' + rid).remove();
+            var array = $(".tezfile").map(function () { return this.id; }).get();
+            $('#file_list').val(array);
+        }
+
+        function text_fields() {
+
+          
+            var res_f = $('#text_list').val().split(",");
+            do {
+                textupload++;
+                var checkname = "text" + mediaupload;
+            } while ($.inArray(checkname, res_f) > -1);
+
+            var objTo = document.getElementById('text_fields')
+            var divtest = document.createElement("div");
+            divtest.setAttribute("class", "col-md-12 tremoveclass" + textupload);
+            var rdiv = 'tremoveclass' + textupload;
+            divtest.innerHTML = '<div class="col-12"><div class="card"><div class="card-body row"><div class="col-9"><input type="text" id="tsubject' + textupload + '" name="tsubject' + textupload + '" class="form-control form-control-danger tezsub" placeholder="Başlık ' + textupload + '"></div><div class="col-3"><button class="btn btn-danger" type="button" onclick="remove_text_fields(' + textupload + ');"> <i class="fa fa-minus"></i></button></div><div class="col-12"><textarea id="text' + textupload + '" name="text' + textupload + '" class="form-control teztext" rows="15" placeholder="Metin ..."></textarea></div></div></div></div>';
+            objTo.appendChild(divtest)
+            $('#text' + textupload).wysihtml5();
+            var array = $(".teztext").map(function () { return this.id; }).get();
+            $('#text_list').val(array);
+            var array = $(".tezsub").map(function () { return this.id; }).get();
+            $('#textsub_list').val(array);
+        }
+
+        function remove_text_fields(rid) {
+            $('.tremoveclass' + rid).remove();
+            var array = $(".teztext").map(function () { return this.id; }).get();
+            $('#text_list').val(array);
+            var array = $(".tezsub").map(function () { return this.id; }).get();
+            $('#textsub_list').val(array);
+        }</script>
+}

@@ -1,0 +1,18 @@
+güncelle çalışıyor mu profilde ki 							kontrol edildi düzeltildi
+profil düzenledikten sonra hata veriyordu 						yapıldı
+profilde resim upload									yapıldı
+profilde telefon kaydetme sorunlu							11 karakter olarak db ve frontta sınırladım
+create new kısmı edit yazsın profilde							yapıldı
+ana sayfada logoya tıklayınca hata vermesi düzeltildi
+proje eklerken ve güncellerken tarih ekleme düzeltildi
+tez olusturduktan sonra görünteleme tarih hatalı geliyor düzeltildi
+
+
+karsı tarafı favorilere ekleme
+face veya gmail giriş yapılması
+son gelişmelerde tüm tezler gözükecek
+favorilerde ise begendiklerim gözükecek
+tüm kullanıcı listesinin görünmesi ve diğer tarafa mesaj atılması hiç yok	
+
+
+05340849648
