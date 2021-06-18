@@ -1,3 +1,3 @@
 # TezSepeti 
-Hacettepe University Graduation Project
+Hacettepe University Graduation Project <d>
 Nezir Turhallı
